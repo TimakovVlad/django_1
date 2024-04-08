@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, reverse
 import datetime, os
 
@@ -35,6 +35,5 @@ def workdir_view(request):
     # директории
     workdir = os.getcwd()
     files = os.listdir(workdir)
-    response_content = '\n'.join(files)
     # raise NotImplemented
-    return HttpResponse(response_content)
+    return JsonResponse({'files': files})
